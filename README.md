@@ -176,3 +176,7 @@ swoole 的更多配置请阅读:
 - [simplesoftwareio/simple-qrcode](https://github.com/SimpleSoftwareIO/simple-qrcodea)
 - [fxcosta/laravel-chartjs](https://github.com/fxcosta/laravel-chartjs)
 
+## License
+  [MIT](https://github.com/cranux/LaravelDevTemplate/blob/master/LICENSE)
+  
+
