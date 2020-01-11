@@ -4,6 +4,7 @@
     <b>laravel + swoole + adminlte 模板 效率开发项目</b>
 </p>
 
+  
 ## 环境要求
 
 1. PHP >= 7.2.0
@@ -30,7 +31,7 @@ swoole接入、权限管理、基于token验证的接口、小程序用户注册
 
 ## 文档
 
-文档内容逐步增加中  [laravelDevelopmentTemplatDoc](http://doc.niexp.cn/docs/laravelDevelopmentTemplate)
+文档内容逐步增加中  [laravelDevTemplatDoc](http://doc.niexp.cn/docs/laravelDevelopmentTemplate)
 
 ## 安装
 
