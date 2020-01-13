@@ -42,20 +42,27 @@ composer install
 ```
 (不使用swoole时,请把 composer.json中的 hhxsv5/laravel-s 删除再执行上述命令)
 
-2.配置key
+2.**复制 `.env`**
+
+```bash
+cp .env.example .env
+```
+
+3.**配置key**
 
 ```bash
 php artisan key:generate
 ```
 
-3.**编辑 `.env`,并配置相关信息**
+4.**编辑 `.env`,配置数据库等信息**
 
-4.**生成数据库和填充数据**
+5.**生成数据库和填充数据**
 
 ```bash
 php artisan migrate && php artisan db:seed
 ```
-5.**配置jwt-auth**
+
+6.**配置jwt-auth**
 
 ```bash
 php artisan jwt:secret
