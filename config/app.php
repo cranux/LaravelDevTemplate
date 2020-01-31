@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
+        Cranux\DotenvEditor\DotenvEditorServiceProvider::class,
     ],
 
     /*
@@ -225,7 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'DotenvEditor' => Cranux\DotenvEditor\DotenvEditorFacade::class,
     ],
 
 ];

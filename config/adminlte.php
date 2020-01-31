@@ -222,6 +222,12 @@ return [
             'icon_color' => 'purple',
             'active' => ['admin/setting?*', 'admin/setting'],
         ],
+        [
+            'text' => 'env设置',
+            'url'  => 'admin/env',
+            'icon' => 'fab fa-envira',
+            'icon_color' => 'olive',
+        ],
 
     ],
 
