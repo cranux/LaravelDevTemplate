@@ -33,6 +33,8 @@ swoole接入、权限管理、基于token验证的接口、小程序用户注册
 
 文档内容逐步增加中  [laravelDevTemplatDoc](http://doc.niexp.cn/docs/laravelDevelopmentTemplate)
 
+后台账号密码:  admin@admin.com   123456
+
 ## 安装
 
 1.**执行命令**
