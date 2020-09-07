@@ -152,6 +152,10 @@ swoole 的更多配置请阅读:
 ## Adimlte 的配置使用
 请仔细查看 [文档](https://github.com/JeroenNoten/Laravel-AdminLTE#62-favicon)
 
+### 注意：
+如果登录后台有关于composer的报错，请执行
+`composer dump-autoload` 之后重启进程重新登录
+
 ### 有问题请提交 lssues ,本人长期维护更新
 也可以添加微信交流 
 ![微信](https://image.niexp.cn/wx/mmqrcode1578754969742.png)
