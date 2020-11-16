@@ -42,7 +42,7 @@ swoole接入、权限管理、基于token验证的接口、小程序用户注册
 ```bash
 composer install 
 ```
-(不使用swoole时,请把 composer.json中的 hhxsv5/laravel-s 删除再执行上述命令)
+(不使用swoole时,请执行命令  `composer remove hhxsv5/laravel-s` 此命令会自动删除并install)
 
 2.**复制 `.env`**
 
