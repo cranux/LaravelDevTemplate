@@ -39,11 +39,10 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Exception $exception
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
+     * @throws Exception
      */
     public function render($request, Exception $exception)
     {
@@ -51,29 +50,34 @@ class Handler extends ExceptionHandler
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
             return redirect('/');
         }
-
-        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException) {
-            //判断token是否存在
-            if (! Auth::guard('api')->parser()->setRequest($request)->hasToken()) {
-                return response()->json([
-                    'code' => 4002,
-                    'message' => 'Token not provided',
-                ]);
-            }
-
-            //判断token是否正常
-            try {
-                if (! Auth::guard('api')->parseToken()->authenticate()) {
+        if (request()->segment(1) == 'api') {
+            if ($exception instanceof \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException) {
+                //判断token是否存在
+                if (!Auth::guard('api')->parser()->setRequest($request)->hasToken()) {
                     return response()->json([
-                        'code' => 4003,
-                        'message' => 'jwt-auth: Member not found',
+                        'code' => 4002,
+                        'message' => 'Token not provided',
                     ]);
                 }
-            } catch (Exception $e) {
-                return response()->json([
-                    'code' => 4004,
-                    'message' => 'jwt-auth: Token is error',
-                ]);
+
+                //判断token是否正常
+                try {
+                    if (!Auth::guard('api')->parseToken()->authenticate()) {
+                        return response()->json([
+                            'code' => 4003,
+                            'message' => 'jwt-auth: Member not found',
+                        ]);
+                    }
+                } catch (Exception $e) {
+                    return response()->json([
+                        'code' => 4004,
+                        'message' => 'jwt-auth: Token is error',
+                    ]);
+                }
+            }
+            if ($exception) {
+                $errorData = $this->convertExceptionToArray($exception);
+                return json(5001,'error',$errorData);
             }
         }
         return parent::render($request, $exception);
