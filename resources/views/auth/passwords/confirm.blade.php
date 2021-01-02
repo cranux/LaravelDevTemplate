@@ -1,1 +1,1 @@
-@extends('adminlte::passwords.confirm')
+@extends('adminlte::auth.passwords.confirm')
