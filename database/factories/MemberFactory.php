@@ -1,19 +1,36 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use Faker\Generator as Faker;
+use App\Models\Member;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-$factory->define(\App\Models\Member::class, function (Faker $faker) {
-    return [
-        'inviter_id' => rand(1, 20),
-        'wx_unionid' => Str::random(30),
-        'wx_openid' => Str::random(30),
-        'nickname' => $faker->name,
-        'sex' => rand(0, 2),
-        'credit1' => rand(0, 1000),
-        'credit2' => rand(0, 1000),
-        'head_img_url' => $faker->imageUrl(100, 100),
-    ];
-});
+class MemberFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Member::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'inviter_id' => rand(1, 20),
+            'wx_unionid' => Str::random(30),
+            'wx_openid' => Str::random(30),
+            'nickname' => $this->faker->name,
+            'sex' => rand(0, 2),
+            'credit1' => rand(0, 1000),
+            'credit2' => rand(0, 1000),
+            'head_img_url' => $this->faker->imageUrl(100, 100),
+        ];
+    }
+}

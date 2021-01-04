@@ -2,9 +2,9 @@
 
 namespace App\Exceptions;
 
-use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Auth;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -28,30 +28,31 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * Report or log an exception.
+     * Register the exception handling callbacks for the application.
      *
-     * @param  \Exception  $exception
      * @return void
      */
-    public function report(Exception $exception)
+    public function register()
     {
-        parent::report($exception);
+        $this->reportable(function (Throwable $e) {
+            //
+        });
     }
 
     /**
+     * Render an exception into an HTTP response.
      * @param \Illuminate\Http\Request $request
-     * @param Exception $exception
+     * @param Throwable $e
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
-     * @throws Exception
+     * @throws Throwable
      */
-    public function render($request, Exception $exception)
-    {
+    public function render($request, Throwable $e){
         //捕获laravel-permission异常 然后跳转到主页
-        if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
+        if ($e instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
             return redirect('/');
         }
         if (request()->segment(1) == 'api') {
-            if ($exception instanceof \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException) {
+            if ($e instanceof \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException) {
                 //判断token是否存在
                 if (!Auth::guard('api')->parser()->setRequest($request)->hasToken()) {
                     return response()->json([
@@ -68,18 +69,18 @@ class Handler extends ExceptionHandler
                             'message' => 'jwt-auth: Member not found',
                         ]);
                     }
-                } catch (Exception $e) {
+                } catch (\Exception $e) {
                     return response()->json([
                         'code' => 4004,
                         'message' => 'jwt-auth: Token is error',
                     ]);
                 }
             }
-            if ($exception) {
-                $errorData = $this->convertExceptionToArray($exception);
+            if ($e) {
+                $errorData = $this->convertExceptionToArray($e);
                 return json(5001,'error',$errorData);
             }
         }
-        return parent::render($request, $exception);
+        return parent::render($request, $e);
     }
 }

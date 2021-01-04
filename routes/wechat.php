@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 
 Route::as('wechat.')
     ->group(function () {

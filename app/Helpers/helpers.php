@@ -46,3 +46,4 @@ if (!function_exists('json')){
         return response()->json($result,$statusCode,$headers,$options);
     }
 }
+

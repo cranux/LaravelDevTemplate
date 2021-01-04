@@ -42,13 +42,13 @@ class MemberController extends Controller
      */
     public function index()
     {
-        var_dump(auth()->user()->id);
-//        $this->repository->setPresenter("Prettus\\Repository\\Presenter\\ModelFractalPresenter");
-//        $members = $this->repository->paginate();
-//        return response()->json([
-//            'code' => 1001,
-//            'data' =>$members
-//        ],200);
+//        var_dump(auth()->user()->id);
+        $this->repository->setPresenter("Prettus\\Repository\\Presenter\\ModelFractalPresenter");
+        $members = $this->repository->paginate();
+        return response()->json([
+            'code' => 1001,
+            'data' =>$members
+        ],200);
     }
 
     public function getUserList()
