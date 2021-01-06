@@ -229,7 +229,7 @@
                           <a class="btn btn-warning" href="javascript:;"
                              @click="restoreBackup({{ $backup['unformatted'] }})"
                              title="{!! __('dotenv-editor::views.backup_table_options_restore') !!}">
-                                                        <span class="fa fa-refresh"
+                                                        <span class="fa fa-redo-alt"
                                                               title="{!! __('dotenv-editor::views.backup_table_options_restore') !!}"></span>
                           </a>
                           <a class="btn btn-info"
