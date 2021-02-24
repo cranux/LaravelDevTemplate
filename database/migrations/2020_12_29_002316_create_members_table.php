@@ -25,8 +25,11 @@ class CreateMembersTable extends Migration
             $table->integer('credit2')->default(0)->comment('积分');
             $table->string('head_img_url')->default('')->comment('头像');
             $table->timestamps();
-            $table->unique('wx_unionid', 'wx_openid');
-            $table->index(['inviter_id', 'wx_unionid', 'wx_openid']);
+            $table->unique('wx_unionid', 'wx_unionid');
+//            $table->index(['inviter_id', 'wx_unionid', 'wx_openid']);
+            $table->index('inviter_id');
+            $table->index('wx_unionid');
+            $table->index('wx_openid');
             $table->comment = '用户';
         });
     }
