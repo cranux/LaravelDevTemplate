@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Prettus\Repository\Contracts\Transformable;
@@ -12,7 +13,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class Member extends Model implements AuthenticatableContract,JWTSubject,Transformable
 {
     use Authenticatable,
-        TransformableTrait;
+        TransformableTrait,
+        HasFactory;
     /**
      * @var string
      */

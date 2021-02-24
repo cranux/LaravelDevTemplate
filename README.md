@@ -34,10 +34,10 @@ swoole接入、权限管理、基于token验证的接口、小程序用户注册
 
 ## 安装
 
-1.**执行命令**
+1.**执行命令** (安装依赖)
 
 ```bash
-composer install 
+composer install    
 ```
 
 2.**复制 `.env`**
