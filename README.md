@@ -28,7 +28,9 @@ swoole接入、权限管理、基于token验证的接口、小程序用户注册
 
 ## 文档
 
-文档内容逐步增加中  [laravelDevTemplatDoc](http://doc.niexp.cn/docs/laravelDevelopmentTemplate)
+文档内容  [laravelDevTemplatDoc](http://doc.niexp.cn/docs/laravelDevelopmentTemplate)
+
+常见问题解决 [点这里](http://doc.niexp.cn/docs/laravelDevelopmentTemplate/laravelDevelopmentTemplate-1cpl7ofnvjeqv)
 
 后台账号密码:  admin@admin.com   123456
 
